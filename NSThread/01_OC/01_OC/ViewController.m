@@ -30,13 +30,36 @@
 
 - (void)createNewThread1{
     //创建线程
-    NSThread * thread = [[NSThread alloc] initWithBlock:^{
+    NSThread * threadA = [[NSThread alloc] initWithBlock:^{
         //执行任务
         NSLog(@"执行任务 %@",[NSThread currentThread]);
     }];
     
+    threadA.name = @"线程A";
+    //设置优先级 0~~1 默认0.5
+    threadA.threadPriority = 1.0;
     //启动线程
-    [thread start];
+    [threadA start];
+    
+    NSThread * threadB = [[NSThread alloc] initWithBlock:^{
+        //执行任务
+        NSLog(@"执行任务 %@",[NSThread currentThread]);
+    }];
+    
+    threadB.name = @"线程B";
+    threadB.threadPriority = 0.1;
+    //启动线程
+    [threadB start];
+    
+    NSThread * threadC = [[NSThread alloc] initWithBlock:^{
+        //执行任务
+        NSLog(@"执行任务 %@",[NSThread currentThread]);
+    }];
+    
+    threadC.name = @"线程C";
+    
+    //启动线程
+    [threadC start];
 }
 
 - (void)createNewThread2{
