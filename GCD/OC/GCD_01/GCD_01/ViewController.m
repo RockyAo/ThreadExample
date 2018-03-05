@@ -95,4 +95,8 @@
     });
 }
 
+- (void)asyncMain{
+    
+}
+
 @end
